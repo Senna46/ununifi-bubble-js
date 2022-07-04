@@ -163,24 +163,18 @@
         const account = convertUnknownAccountToBaseAccount(unknownAccount);
         console.log(account);
 
-        // build MsgListNft
-        const msgPlaceBid =
-          new ununificlient.proto.ununifi.nftmarket.MsgPlaceBid({
+        const msgPayFullBid =
+          new ununificlient.proto.ununifi.nftmarket.MsgPayFullBid({
             sender: senderAccAddressString,
             nft_id: {
               class_id: "a10",
               nft_id: "a10",
             },
-            amount: {
-              amount: "100",
-              denom: "uguu",
-            },
-            automatic_payment: true,
           });
 
         // build TxBody
         const txBody = new cosmosclient.proto.cosmos.tx.v1beta1.TxBody({
-          messages: [cosmosclient.codec.instanceToProtoAny(msgPlaceBid)],
+          messages: [cosmosclient.codec.instanceToProtoAny(msgPayFullBid)],
           memo: "",
         });
 
